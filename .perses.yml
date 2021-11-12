@@ -1,0 +1,155 @@
+############## PROJECT CONFIGURATION ##############
+
+#Project Name.
+project_name: "DAC Shopping Center"
+
+#Author: Name of the operator. Used as a prefix to avoid name collision on.
+author: "UEX_UMA"
+
+######### EC2 Configuration #########
+
+#Instance AWS type: Only compatible with machines that support kvm virtualization -> https://help.ubuntu.com/community/KVM/Installation.
+instance_type: "m5.metal"
+#AWS Region.
+region: "eu-west-1"
+
+#AMI.
+ami_id: "ami-035966e8adab4aaad"
+
+
+######### Environment Configuration #########
+  #### Set of devices ####
+
+  # Id: Name of set of devices
+  # Type: mobile
+  # Devices: numbers of Android devices to deploy
+  # #Android version: You can select 6 to 11.
+  # CPU:  maximum amount of available CPU resources each device can use
+    #(We recommend a minimum of 1.5)
+  # RAM:  maximum amount of memory each device can use
+    #(We recommend a minimum of 3g '3GB').
+
+devices:
+  - id: "Medium Devices"
+    type: "mobile"
+    devices: 50
+    android_version: 10
+    hardware:
+      cpu: "2"
+      ram: "4g"
+
+
+#Application Id of Android App (can find it in the 'build.graddle' file of the application).
+application_id: "com.unexuma.mobile_shoppingcenter"
+
+#Time to wait for the deployment of Android devices (1m '1 minute', 1h '1 hour')
+#For example, for deploy 50 devices, wait 20m '20 minutes'
+time_wait: "20m"
+
+
+
+######### Tests Definition #########
+
+#tests:
+#  - id: "Test1"
+#    type: "apipecker"
+#    config:
+#      concurrentUsers: 1
+#      iterations: 5
+#      delay: 1000
+#      url: "http://108.129.48.139/temperature?devices=10"
+#    expect:
+#      mean:
+#        under: 2000
+#  - id: "Test2"
+#    type: "apipecker"
+#    config:
+#      concurrentUsers: 1
+#      iterations: 5
+#      delay: 1000
+#      url: "http://108.129.48.139/temperature?devices=20"
+#    expect:
+#      mean:
+#        under: 2000
+#  - id: "Test3"
+#    type: "apipecker"
+#    config:
+#      concurrentUsers: 1
+#      iterations: 5
+#      delay: 500
+#      url: "http://108.129.48.139/temperature?devices=30"
+#    expect:
+#      mean:
+#        under: 2000
+#  - id: "Test4"
+#    type: "apipecker"
+#    config:
+#      concurrentUsers: 1
+#      iterations: 5
+#      delay: 500
+#      url: "http://108.129.48.139/temperature?devices=40"
+#    expect:
+#      mean:
+#        under: 2000
+#  - id: "Test5"
+#    type: "apipecker"
+#    config:
+#      concurrentUsers: 1
+#      iterations: 5
+#      delay: 500
+#      url: "http://108.129.48.139/temperature?devices=50"
+#    expect:
+#      mean:
+#        under: 2000
+
+tests:
+  - id: "Test1"
+    type: "apipecker"
+    config:
+      concurrentUsers: 1
+      iterations: 5
+      delay: 1000
+      url: "http://3.99.19.181/temperature?devices=10"
+    expect:
+      mean:
+        under: 2000
+  - id: "Test2"
+    type: "apipecker"
+    config:
+      concurrentUsers: 1
+      iterations: 5
+      delay: 1000
+      url: "http://3.99.19.181/temperature?devices=20"
+    expect:
+      mean:
+        under: 2000
+  - id: "Test3"
+    type: "apipecker"
+    config:
+      concurrentUsers: 1
+      iterations: 5
+      delay: 500
+      url: "http://3.99.19.181/temperature?devices=30"
+    expect:
+      mean:
+        under: 2000
+  - id: "Test4"
+    type: "apipecker"
+    config:
+      concurrentUsers: 1
+      iterations: 5
+      delay: 500
+      url: "http://3.99.19.181/temperature?devices=40"
+    expect:
+      mean:
+        under: 2000
+  - id: "Test5"
+    type: "apipecker"
+    config:
+      concurrentUsers: 1
+      iterations: 5
+      delay: 500
+      url: "http://3.99.19.181/temperature?devices=50"
+    expect:
+      mean:
+        under: 2000
